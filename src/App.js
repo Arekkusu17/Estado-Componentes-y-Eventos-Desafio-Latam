@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import swal from 'sweetalert';
 import Input from "./components/input"
 import Button from "./components/button";
+import "./App.css"
 
 const userCredential={
   password:"252525"
@@ -19,16 +21,15 @@ function App() {
     setError("");
 
     if (!name.trim() || !password.trim()) {
+        swal("Error", "No olvides rellenar todos los campos", "error");
         return setError("Llena todos los campos");
     }
 
     if (
         userCredential.password === password
     ) {
-        alert("Bienvenido");
-    } else {
-        setError("Credenciales no válidas");
-    }
+      swal("Ingreso Correcto", `${name}, has rellenado los campos correctamente`, "success");;
+    } 
 };
 
   return (
